@@ -1,6 +1,6 @@
 import { useState } from "react";
-// import { ethers } from "ethers";
-// import { create as ipfsHttpClient } from "ipfs-http-client";
+import { create as ipfsHttpClient } from "ipfs-http-client";
+import DashboardLayout from "./layout";
 import styles from "./styles/create-item.module.scss";
 import Uploader from "components/Uploader";
 import Input from "components/Input";
@@ -9,15 +9,15 @@ import Icon from "components/Icon";
 import { Authenticated } from "hooks/useAuthenticated";
 import Layout from "components/Layout";
 
+const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+
 const CreateItem = () => {
-  const [fileUrl, setFileUrl] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [formInput, updateFormInput] = useState({
+  const [formInputs, updateFormInputs] = useState({
     price: "",
     name: "",
     description: "",
-    category: null,
-    collection: null,
+    fileUrl: "",
   });
 
   const [formErrors, updateFormErrors] = useState({
@@ -25,72 +25,98 @@ const CreateItem = () => {
     name: "",
     description: "",
     fileUrl: "",
-    category: "",
   });
 
-  const handleCreateItem = async () => {};
+  const handleCreateItem = async () => {
+    const { name, profilePhoto, coverPhoto, description } = formInputs;
+    const data = JSON.stringify({
+      name,
+      description,
+      profilePhoto,
+      coverPhoto,
+    });
+
+    try {
+      setLoading(true);
+      const added = await client.add(data);
+
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+
+      console.log(url);
+    } catch (err) {
+      setLoading(false);
+    }
+  };
 
   return (
     <Authenticated>
       <Layout>
-        <section className={styles.create}>
-          <div className={styles.create__content}>
-            <h2>Create New Item</h2>
+        <DashboardLayout>
+          <section className={styles.create}>
+            <div className={styles.create__content}>
+              <h2>Create New Item</h2>
 
-            <h4>Image, Video, Audio, or 3D Model</h4>
-            <h5>
-              File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV,
-              OGG, GLB, GLTF. Max size: 100 MB
-            </h5>
+              <h4>Image, Video, Audio, or 3D Model</h4>
+              <h5>
+                File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV,
+                OGG, GLB, GLTF. Max size: 100 MB
+              </h5>
 
-            <div className={styles.create__form} onSubmit={handleCreateItem}>
-              <Uploader fileUrl={fileUrl} setFileUrl={setFileUrl} />
-              {formErrors.fileUrl && (
-                <p className={styles.inputError} data-testid="input-error">
-                  <Icon id="ErrorIcon" />
-                  {formErrors.fileUrl}
-                </p>
-              )}
-              <Input
-                label="Name"
-                type="text"
-                placeholder="Item name"
-                autoFocus
-                name="itemName"
-                onChange={(e) => {
-                  updateFormInput({ ...formInput, name: e.target.value });
-                  updateFormErrors({ ...formErrors, name: "" });
-                }}
-                error={formErrors.name}
-              />
-              <TextArea
-                label="Description"
-                placeholder="Enter item description"
-                rows="5"
-                maxLength="280"
-                name="description"
-                onChange={(value) => {
-                  updateFormInput({ ...formInput, description: value });
-                  updateFormErrors({ ...formErrors, description: "" });
-                }}
-                error={formErrors.description}
-              />
-              <Input
-                label="Minting Price"
-                type="number"
-                placeholder="Selling Price"
-                name="price"
-                onChange={(e) => {
-                  updateFormInput({ ...formInput, price: e.target.value });
-                  updateFormErrors({ ...formErrors, price: "" });
-                }}
-                error={formErrors.price}
-              />
+              <div className={styles.create__form} onSubmit={handleCreateItem}>
+                <Uploader
+                  fileUrl={formInputs.profilePhoto}
+                  setFileUrl={(fileUrl) => {
+                    updateFormInputs({ ...formInputs, fileUrl: fileUrl });
+                    updateFormErrors({ ...formErrors, fileUrl: "" });
+                  }}
+                />
+                {formErrors.fileUrl && (
+                  <p className={styles.inputError} data-testid="input-error">
+                    <Icon id="ErrorIcon" />
+                    {formErrors.fileUrl}
+                  </p>
+                )}
+                <Input
+                  label="Name"
+                  type="text"
+                  placeholder="Item name"
+                  autoFocus
+                  name="itemName"
+                  onChange={(e) => {
+                    updateFormInputs({ ...formInputs, name: e.target.value });
+                    updateFormErrors({ ...formErrors, name: "" });
+                  }}
+                  error={formErrors.name}
+                />
+                <TextArea
+                  label="Description"
+                  placeholder="Enter item description"
+                  rows="5"
+                  maxLength="280"
+                  name="description"
+                  onChange={(value) => {
+                    updateFormInputs({ ...formInputs, description: value });
+                    updateFormErrors({ ...formErrors, description: "" });
+                  }}
+                  error={formErrors.description}
+                />
+                <Input
+                  label="Minting Price"
+                  type="number"
+                  placeholder="Selling Price"
+                  name="price"
+                  onChange={(e) => {
+                    updateFormInputs({ ...formInputs, price: e.target.value });
+                    updateFormErrors({ ...formErrors, price: "" });
+                  }}
+                  error={formErrors.price}
+                />
 
-              <button>Create Item</button>
+                <button onClick={handleCreateItem}>Create Item</button>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </DashboardLayout>
       </Layout>
     </Authenticated>
   );

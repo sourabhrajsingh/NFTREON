@@ -1,0 +1,21 @@
+.items {
+  padding-right: 5rem;
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      border: none;
+      height: 3rem;
+      border-radius: 8px;
+      background: tomato;
+      color: #ffffff;
+      font-size: 1em;
+      font-style: normal;
+      font-weight: 500;
+      width: 100%;
+      outline: none;
+      margin-top: 3rem;
+      width: 20%;
+    }
+  }
+}

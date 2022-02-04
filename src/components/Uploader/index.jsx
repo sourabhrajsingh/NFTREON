@@ -1,33 +1,32 @@
 import { useRef, useState } from "react";
-// import { create as ipfsHttpClient } from "ipfs-http-client";
+import { create as ipfsHttpClient } from "ipfs-http-client";
 import styles from "./uploader.module.scss";
 import Icon from "components/Icon";
-// import { Circle } from "rc-progress";
+import { Circle } from "rc-progress";
 
-// const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
-const Upload = ({ fileUrl, setFileUrl, variant }) => {
+const Upload = ({ fileUrl, setFileUrl, variant, accept }) => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const inputRef = useRef(null);
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
-    // try {
-    //   setUploading(true);
-    //   const added = await client.add(file, {
-    //     progress: (prog) => setProgress(prog),
-    //   });
+    try {
+      setUploading(true);
+      const added = await client.add(file, {
+        progress: (prog) => setProgress(prog),
+      });
 
-    //   const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-    //   setFileUrl(url);
-    //   setUploading(false);
-    //   setProgress(0);
-    // } catch (err) {
-    //   setUploading(false);
-    //   setProgress(0);
-    // }
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      setFileUrl(url);
+      setUploading(false);
+      setProgress(0);
+    } catch (err) {
+      setUploading(false);
+      setProgress(0);
+    }
   };
 
   return (
@@ -69,16 +68,20 @@ const Upload = ({ fileUrl, setFileUrl, variant }) => {
       ) : (
         <>
           {uploading ? (
-            // <Circle
-            //   percent={progress / 1000}
-            //   strokeWidth="2"
-            //   strokeColor="rgb(0,0,0)"
-            //   className={styles.upload__progress}
-            // />
-            <p>Uploading</p>
+            <Circle
+              percent={progress / 1000}
+              strokeWidth="2"
+              strokeColor="rgb(0,0,0)"
+              className={styles.upload__progress}
+            />
           ) : (
             <>
-              <input type="file" ref={inputRef} onChange={handleFileUpload} />
+              <input
+                type="file"
+                accept={accept ? accept : "video/* image/* audio/*"}
+                ref={inputRef}
+                onChange={handleFileUpload}
+              />
               <div
                 className={
                   variant === "circle"

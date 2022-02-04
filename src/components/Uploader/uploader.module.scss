@@ -133,14 +133,14 @@
   }
 
   &__banner {
-    width: 50rem;
+    width: 36rem;
     height: 15rem;
     border-radius: 20px;
     border: 3px dashed rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
-
+    margin-bottom: 3rem;
     input {
       display: none;
     }
