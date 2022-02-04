@@ -1,0 +1,143 @@
+.homepage {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    padding: 0 5rem;
+    &__left {
+      display: flex;
+      justify-content: center;
+      color: white;
+      flex-direction: column;
+      width: 60vw;
+      padding-right: 5rem;
+      h3 {
+        font-size: 4em;
+        font-weight: 800;
+        color: tomato;
+        margin-bottom: 2rem;
+      }
+
+      p {
+        font-size: 2em;
+        margin-bottom: 2rem;
+      }
+      button {
+        border: 1px solid #7f8286;
+        padding: 1rem 4.3125rem;
+        border-radius: 8px;
+        background: tomato;
+        color: white;
+        font-size: 1.3em;
+        font-style: normal;
+        font-weight: 500;
+        width: 50%;
+      }
+    }
+    &__right {
+      width: 40vw;
+      img {
+        width: 40vw;
+        height: 35rem;
+      }
+    }
+  }
+
+  &__search {
+    padding: 4rem 5rem;
+    text-align: center;
+
+    h3 {
+      font-size: 3em;
+      font-weight: 800;
+      margin-bottom: 2rem;
+    }
+
+    &__bar {
+      display: flex;
+      &__search {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        height: 3rem;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin-right: 3rem;
+        svg {
+          position: absolute;
+          left: 1rem;
+          top: 0.8rem;
+        }
+        input {
+          height: 3rem;
+          width: 100%;
+          border: none;
+          outline: none;
+          padding: 0 3rem;
+        }
+      }
+
+      button {
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        background: tomato;
+        color: white;
+        font-size: 1.3em;
+        font-style: normal;
+        font-weight: 500;
+        width: 10rem;
+      }
+    }
+
+    &__about {
+      margin-top: 8rem;
+      p {
+        font-size: 1.3em;
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 8rem;
+    padding: 0 5rem;
+    &__item {
+      display: flex;
+      margin-bottom: 8rem;
+      &__desc {
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h4 {
+          font-size: 2em;
+          color: tomato;
+          margin-bottom: 2rem;
+        }
+
+        p {
+          width: 40vw;
+          font-size: 1.3em;
+        }
+      }
+      &__image {
+        width: 40vw;
+        height: 20rem;
+        position: relative;
+        img {
+          width: 40vw;
+          height: 20rem;
+        }
+        &__overlay {
+          width: 40vw;
+          height: 20rem;
+          position: absolute;
+          top: 0;
+          background-color: rgba(0, 0, 0, 0.6);
+          z-index: 1;
+        }
+      }
+    }
+  }
+}

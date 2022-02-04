@@ -1,14 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { MoralisProvider } from "react-moralis";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <MoralisProvider
+    appId="ZuYKAHDGzqbolrcGC3Vad9YQf3Q11yICe5UB8uqK"
+    serverUrl="https://dohntlebwywv.usemoralis.com:2053/server"
+  >
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </MoralisProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
