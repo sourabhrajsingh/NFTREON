@@ -9,6 +9,7 @@ import AudienceImg from "assets/images/audence.jpg";
 import { UnAuthenticated } from "../../hooks/useAuthenticated";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react/cjs/react.development";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { authenticate, isAuthenticated, user } = useMoralis();
@@ -106,6 +107,69 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        <section className={styles.nftListing}>
+          <h3>Listings</h3>
+          <div className={styles.nftListing__container}>
+            <Link to={`/${1}`}>
+              <div className={styles.nftListing__card}>
+                <img src={AudienceImg} alt="Creator Image" />
+                <div className={styles.nftListing__card__cardDetails}>
+                  <h4>Creator Name</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </div>
+            </Link>
+            <Link to={`/${1}`}>
+              <div className={styles.nftListing__card}>
+                <img src={AudienceImg} alt="Creator Image" />
+                <div className={styles.nftListing__card__cardDetails}>
+                  <h4>Creator Name</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            <Link to={`/${1}`}>
+              <div className={styles.nftListing__card}>
+                <img src={AudienceImg} alt="Creator Image" />
+                <div className={styles.nftListing__card__cardDetails}>
+                  <h4>Creator Name</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </div>
+            </Link>
+            <Link to={`/${1}`}>
+              <div className={styles.nftListing__card}>
+                <img src={AudienceImg} alt="Creator Image" />
+                <div className={styles.nftListing__card__cardDetails}>
+                  <h4>Creator Name</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
       </Layout>
     </UnAuthenticated>
   );
