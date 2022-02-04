@@ -2,16 +2,16 @@ import { Authenticated } from "../../hooks/useAuthenticated";
 import Layout from "../../components/Layout";
 import DashboardLayout from "./layout";
 
-const Dashboard = () => {
+const Subscribers = () => {
   return (
     <Authenticated>
       <Layout>
         <DashboardLayout>
-          <p>Creator dashboard</p>
+          <p>Creator Subscribers</p>
         </DashboardLayout>
       </Layout>
     </Authenticated>
   );
 };
 
-export default Dashboard;
+export default Subscribers;

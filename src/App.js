@@ -1,7 +1,11 @@
 import { useMoralis } from "react-moralis";
 import Home from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import CreateItem from "pages/Dashboard/create-item";
+import Subscribers from "pages/Dashboard/subscribers";
+import CreatorItems from "pages/Dashboard/items";
+import CreatorPage from "pages/CreatorPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./app.scss";
 
 function App() {
@@ -11,7 +15,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" index element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="dashboard" exact element={<Dashboard />} />
+        <Route path="dashboard/create-item" element={<CreateItem />} />
+        <Route path="dashboard/items" element={<CreatorItems />} />
+        <Route path="dashboard/subscribers" element={<Subscribers />} />
+        <Route path="/:name" element={<CreatorPage />} />
       </Routes>
     </BrowserRouter>
   );

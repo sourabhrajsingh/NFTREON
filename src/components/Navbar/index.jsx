@@ -6,19 +6,17 @@ import { useNavigate } from "react-router-dom";
 const NavBar = () => {
   const { authenticate, isAuthenticated, user } = useMoralis();
 
-  const signIn = async () => {
-    authenticate();
-  };
+  const navigate = useNavigate();
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles.navbar__logo}>
+      <div className={styles.navbar__logo} onClick={() => navigate("/")}>
         <Icon id="Logo" />
         <p>NFTreon</p>
       </div>
       <div className={styles.navbar__right}>
         {!isAuthenticated ? (
-          <button onClick={signIn}>Create on NFTreon</button>
+          <button onClick={() => authenticate()}>Create on NFTreon</button>
         ) : (
           <div className={styles.navbar__right__avatar}>
             <Icon id="Avatar" />

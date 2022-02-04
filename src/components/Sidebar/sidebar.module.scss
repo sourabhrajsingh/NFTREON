@@ -1,0 +1,25 @@
+.sidebar {
+  padding-left: 3rem;
+  &__item {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0px 0px 16px 0px #00000014;
+    }
+    p {
+      font-size: 1.1em;
+      margin-left: 1rem;
+      color: #ccc;
+    }
+
+    &__active {
+      box-shadow: 0px 0px 16px 0px #00000014;
+      P {
+        color: tomato;
+      }
+    }
+  }
+}

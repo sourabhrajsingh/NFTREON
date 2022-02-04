@@ -1,0 +1,13 @@
+.layout {
+  position: relative;
+  padding-left: 21vw;
+  &__side {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 20vw;
+    box-shadow: 0px 0px 16px 0px #00000014;
+    padding-top: 10rem;
+  }
+}

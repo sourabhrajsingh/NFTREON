@@ -1,0 +1,65 @@
+.textArea {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+
+  label {
+    font-size: 1.3rem;
+    line-height: 20px;
+    margin-bottom: 0.5rem;
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+  }
+  &Input {
+    position: relative;
+
+    textarea {
+      border: 2px solid #ccc;
+      height: 163px;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 400;
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: "Poppins";
+    }
+    textarea::placeholder {
+      color: #c3c3c3;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+
+    :hover {
+      background: #edf1f7;
+    }
+    :focus {
+      border: 2px solid rgb(0, 0, 0) !important;
+      outline: none !important;
+      box-shadow: 0 0 4px rgba(24, 55, 154, 0.3);
+      background: white !important;
+    }
+    &Count {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 400;
+      color: #c3c3c3;
+    }
+  }
+  &Error {
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ff5b5b;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    svg {
+      margin-right: 6.4px;
+    }
+  }
+}
