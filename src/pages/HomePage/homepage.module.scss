@@ -141,3 +141,68 @@
     }
   }
 }
+
+.nftListing {
+  padding: 0 5rem;
+  h3 {
+    font-size: 3em;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: tomato;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &__container {
+    margin-bottom: 10rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  a:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
+    -moz-transform: translate(0, -2px);
+    -ms-transform: translate(0, -2px);
+    -o-transform: translate(0, -2px);
+    -webkit-transform: translate(0, -2px);
+    transform: translate(0, -2px);
+    transition: all 1s ease-in-out;
+  }
+  @media (max-width: 768px) {
+    &__container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &__card {
+    display: flex;
+    flex-direction: column;
+    // padding: 25px 15px;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    background-color: #f3f4f3;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 15rem;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+    }
+    &__cardDetails {
+      padding: 1rem;
+      h4 {
+        text-align: center;
+        margin: 0.75rem 0;
+        font-size: 1.2rem;
+        color: #000;
+      }
+      p {
+        color: #7f8286;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
