@@ -1,5 +1,8 @@
 # NFTREON
 ## Description
+
+### This project was created during the Road to Web3 Hackathon powered by Polygon
+
 Basically, this product has two components. When the creator comes to the app, he makes two NFTS one is the Video NFT and the other is the support NFT. The function of the Video is that he will mint a token which will have an IPFS hash IPFS hash of a video content. Each NFT will hold that IPFS and will list all the NFTs on his/her personal channel. The supporter NFT is basically when the Creator has minted this NFT contract, anybody that watches his channel can pay the creator, and while paying him he can mint NFT, which will be like a banner or a badge of a supporter. So therefore, he gets NFT, which has a badge of the content creator. And by virtue of paying the content creator, He has also supported him and the supporter and NFTS will have the banner of the artists whichever banner of the artists he has and he has to pay something too. Regarding the listing of the NFTs, each content creator will have his/her own channel. All the artists will be listed on a separate dashboard where all the artists that have maintained their tokens using our app will be listed. So anybody can go there and click on the channel of the particular content creator then he will go to all the videos and video NF T's that he has created. Regarding the video content, when we have a video NFT there will be a button which will pop up the video player and which will play the IPFS content that is stored on IPFS using IPFS.video. Tech stack is Solidity + Hardhat and using IPFS for storage of the NFT content as a hash IPFS hash. On the frontend we used Morales web3.js and React js and all of this is deployed on Polygon.
 
 
